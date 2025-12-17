@@ -1,0 +1,80 @@
+<% layout('layouts/boilerplate')%>
+
+<div class="row">
+  <div class="col-6 offset-3">
+    <h1 class="text-center mb-3">Edit Campground</h1>
+    <form
+      action="/camp/<%= camp._id %>?_method=PUT"
+      novalidate
+      method="POST"
+      class="needs-validation"
+    >
+      <div class="mb-3">
+        <label class="form-label" for="title">Name of campground: </label>
+        <input
+          class="form-control"
+          type="text"
+          id="title"
+          name="title"
+          placeholder="Enter Title "
+          value="<%=camp.title%>"
+          required
+        />
+        <div class="invalid-feedback">Please Enter a Campground Name.</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="price"> Price: </label>
+        <div class="input-group">
+          <span class="input-group-text" id="dollar">$</span>
+          <input
+            class="form-control"
+            type="number"
+            id="price"
+            name="price"
+            placeholder="Enter price"
+            min="0"
+            step="0.01"
+            value="<%=camp.price%>"
+            aria-describedby="dollar"
+            required
+          />
+          <div class="invalid-feedback">Please Enter a Price.</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="location">Address: </label>
+        <input
+          class="form-control"
+          type="text"
+          id="location"
+          name="location"
+          placeholder="Enter Location"
+          value="<%=camp.location%>"
+          required
+        />
+        <div class="invalid-feedback">Please Enter a Address.</div>
+      </div>
+      <label class="form-label" for=" description">Description: </label>
+      <div class="form-floating mb-3">
+        <textarea
+          class="form-control"
+          type="text"
+          id="description"
+          name="description"
+          placeholder="Enter Description"
+          required
+        >
+<%=camp.description%></textarea
+        >
+        <div class="invalid-feedback">Please Enter a Description.</div>
+      </div>
+      <div class="mb-3"></div>
+
+      <button class="btn btn-primary my-3">Submit Item</button>
+    </form>
+    <a class="btn btn-info my-3" href="/camp/<%= camp._id %>"
+      >Back to <%= camp.title %> Page</a
+    >
+  </div>
+</div>
